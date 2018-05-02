@@ -1,0 +1,47 @@
+{
+  "name": "cs458-midterm",
+  "version": "0.0.1",
+  "description": "midterm project for cs 458 at osu",
+  "main": "server.js",
+  "scripts": {
+    "build": "grunt",
+    "start": "NODE_ENV=dev node server.js",
+    "start-prod": "NODE_ENV=prod node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlkulp/cs458-midterm.git"
+  },
+  "keywords": [
+    "data",
+    "visualization",
+    "oregon",
+    "state",
+    "university",
+    "cs458"
+  ],
+  "author": "Damian Kulp <damiankulp@gmail.com>",
+  "contributors": [
+    "Sean Marty <martys@oregonstate.edu>"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlkulp/cs458-midterm/issues"
+  },
+  "homepage": "https://github.com/dlkulp/cs458-midterm#readme",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "~1.0.1",
+    "grunt-contrib-uglify": "~0.5.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "path": "^0.12.7",
+    "plotly.js": "^1.26.1",
+    "tedious": "^2.3.1",
+    "async": "^2.6.0",
+    "jquery": "^3.3.1",
+    "load-json-file": "^4.0.0"
+  }
+}
