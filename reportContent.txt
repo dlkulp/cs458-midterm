@@ -1,0 +1,9 @@
+Just a temporary text file to work on report content. I will fit this into the template we were given.
+
+Introduction ("Summary backgrounds, tasks, and what you did"):
+
+Method ("Necessary libraries or techniques to complete your project, Why and how to use them"):
+
+Result ("Your Visualization Result (Screenshot), Discussion of your results. What do these patterns mean?"):
+
+Conclusion ("Summarize your project, What is the most difficult part, How to improve your project, Discuss about any other problems can be solved with your techniques):

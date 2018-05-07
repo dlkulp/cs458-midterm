@@ -24,8 +24,13 @@ const options = {
 app.use(express.static(`${__dirname}/public`, options));
 const queryAll = "select r.id, r.careerSatisfaction, r.jobSatisfaction, r.hoursPerWeek, r.startWork, r.stackOverflowSatisfaction, r.salary, cs.id, ct.[type], fj.method, fe.[level], gd.gender, js.[status], lj.[time],	rw.amount, so.usage, ts.[type], yp.years from Responses as r left outer join CompanySize cs on r.companySizeId = cs.id left outer join CompanyType ct on r.companyTypeId = ct.id left outer join FindJob fj on r.findJobId = fj.id left outer join FormalEducation fe on r.formalEducationId = fe.id left outer join Genders gd on r.genderId = gd.id left outer join JobSeekingStatus js on r.jobSeekingStatusId = js.id left outer join LastJob lj on r.lastJobId = lj.id left outer join RemoteWork rw on r.remoteWorkId = rw.id left outer join StackOverflow so on r.stackOverflowId = so.id left outer join TabsSpaces ts on r.tabsSpacesId = ts.id left outer join YearsProgramming yp on r.yearsProgrammingId = yp.id;";
 let allData = [];
-const queryGenderHappy = "select gd.gender as Gender, avg(r.jobSatisfaction) as JobSatisfaction from Responses as r left outer join Genders gd on r.genderId = gd.id group by gd.gender";
+const queryGenderHappy = "select gd.gender as Gender, avg(cast(r.jobSatisfaction as Float)) as JobSatisfaction from Responses as r left outer join Genders gd on r.genderId = gd.id group by gd.gender order by JobSatisfaction desc";
 let genderHappyData = [];
+const queryHoursHappy = "select r.hoursPerWeek as HoursPerWeek, avg(cast(r.jobSatisfaction as Float)) as JobSatisfaction from Responses as r group by r.hoursPerWeek order by JobSatisfaction desc";
+let hoursHappyData = [];
+const queryEducationHappy = "select fe.level as Level, avg(cast(r.jobSatisfaction as Float)) as JobSatisfaction from Responses as r left outer join FormalEducation fe on r.formalEducationId = fe.id group by fe.level order by JobSatisfaction desc";
+let educationHappyData = [];
+
 
 // Clean up data to send to client
 function cleanAll(item, index) {
@@ -108,6 +113,34 @@ app.get("/data/:type", (req, res) => {
                 });
             }
             else res.json(genderHappyData);
+            break;
+        case "hours": 
+            if (hoursHappyData.length == 0) {
+                let plotlyData = {labels:[], values:[]};
+                queryDatabase(queryHoursHappy).then((data)=>{
+                    for (var i = 0; i < data.length; i++) {
+                        plotlyData.labels.push(data[i][0].value);
+                        plotlyData.values.push(data[i][1].value);
+                    }
+                    hoursHappyData = plotlyData;
+                    res.json(hoursHappyData);
+                });
+            }
+            else res.json(hoursHappyData);
+            break;
+        case "education": 
+            if (educationHappyData.length == 0) {
+                let plotlyData = {labels:[], values:[]};
+                queryDatabase(queryEducationHappy).then((data)=>{
+                    for (var i = 0; i < data.length; i++) {
+                        plotlyData.labels.push(data[i][0].value);
+                        plotlyData.values.push(data[i][1].value);
+                    }
+                    educationHappyData = plotlyData;
+                    res.json(educationHappyData);
+                });
+            }
+            else res.json(educationHappyData);
             break;
         default: res.status(404).send("Type not recognized");  
     }
