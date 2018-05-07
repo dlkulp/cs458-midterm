@@ -30,6 +30,8 @@ const queryHoursHappy = "select r.hoursPerWeek as HoursPerWeek, avg(cast(r.jobSa
 let hoursHappyData = [];
 const queryEducationHappy = "select fe.level as Level, avg(cast(r.jobSatisfaction as Float)) as JobSatisfaction from Responses as r left outer join FormalEducation fe on r.formalEducationId = fe.id group by fe.level order by JobSatisfaction desc";
 let educationHappyData = [];
+const queryProgHappy = "select yp.years as Years, avg(cast(r.jobSatisfaction as Float)) as JobSatisfaction from Responses as r left outer join YearsProgramming yp on r.yearsProgrammingId = yp.id group by yp.years order by JobSatisfaction desc";
+let progHappyData = [];
 
 
 // Clean up data to send to client
@@ -141,6 +143,20 @@ app.get("/data/:type", (req, res) => {
                 });
             }
             else res.json(educationHappyData);
+            break;
+        case "prog": 
+            if (progHappyData.length == 0) {
+                let plotlyData = {labels:[], values:[]};
+                queryDatabase(queryProgHappy).then((data)=>{
+                    for (var i = 0; i < data.length; i++) {
+                        plotlyData.labels.push(data[i][0].value);
+                        plotlyData.values.push(data[i][1].value);
+                    }
+                    progHappyData = plotlyData;
+                    res.json(progHappyData);
+                });
+            }
+            else res.json(progHappyData);
             break;
         default: res.status(404).send("Type not recognized");  
     }

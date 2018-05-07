@@ -1,9 +1,32 @@
 Just a temporary text file to work on report content. I will fit this into the template we were given.
 
 Introduction ("Summary backgrounds, tasks, and what you did"):
+ - Midterm project for CS 458 Info Visualization
+ - Job was to find interesting information to visualize, then create a useful visualization
+ - We needed to find a client, as well as (hopefully) an existing and accessible data set
+ - We found the Stack Overflow 2017 Developer Survey, and decided on graduating seniors looking for a job in CS as our clients
+ - Created a visualization to help better inform job-seeking seniors about what choices might lead to the most job satisfaction
 
 Method ("Necessary libraries or techniques to complete your project, Why and how to use them"):
+ - Database-related libraries/techniques
+    - Ideally Damian can write a blurb about this stuff
+ - Application building tools (Grunt, Javascript, Plot.ly)
+    - Sean can write about Plot.ly and mention Javascript
+    - Sean can throw something together about Grunt just by googling like a boss...
 
 Result ("Your Visualization Result (Screenshot), Discussion of your results. What do these patterns mean?"):
+ - Screenshot(s) of visualization webpage
+ - Talk carefully about how the data we chose didn't lead to a whole lot of striking insights
+ - Extrapolate what might be solved if we completed the whole project and flushed out all the data
 
 Conclusion ("Summarize your project, What is the most difficult part, How to improve your project, Discuss about any other problems can be solved with your techniques):
+ - Quick couple summary sentences
+ - Most difficult parts:
+    - requirements and timeline changed multiple times
+    - wrestling with difficult data from the SO Survey
+    - keeping initial landing page simple enough to not overwhelm
+ - How to Improve Project:
+    - completing it is the easiest answer
+    - add detail that gives an idea about the "weight" of each best survey answer
+ - Other problems that can be solved:
+    - mostly could be applied to other survey results to distill them down into easily visualized results for a user who identifies with the data

@@ -2,6 +2,7 @@
 var genderData;
 var hoursData;
 var educationData;
+var progData;
 
 var colorMap = ['#c5d8f7', '#b7cff7', '#a5c5f7', '#94bbf7', '#7baaf2', '#659ff7', '#4f93f9', '#2e7ff7', '#1b75f9', '#0768f7'];
 
@@ -85,6 +86,24 @@ function plotEducationChart() {
     Plotly.newPlot("chart", data, layout);
 }
 
+function plotProgChart() {
+    var layout = {
+        xaxis: {
+            title: 'Years Programming',
+        },
+        yaxis: {
+            title: 'Average Job Satisfaction',
+            range: [0,10],
+        }
+    }
+    var data = [{
+        x: progData.labels,
+        y: progData.values,
+        type: "bar"
+    }];
+    Plotly.newPlot("chart", data, layout);
+}
+
 $(()=>{
     // section to populate blocks/buttons initially:
     var genderRequest = $.ajax({url: "http://localhost:8080/data/gender"})
@@ -94,7 +113,7 @@ $(()=>{
             var blockDiv = document.getElementById("blocks");
             var labelNum = 0;
             if (d.labels[labelNum] == null) labelNum = 1;
-            var genderButton = '<div id="genderButton" style="float:left; width:50%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
+            var genderButton = '<div id="genderButton" style="float:left; margin:1%; width:45%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
                 onclick="plotGenderChart()"><p style="position:relative; top:50%; left:50%; transform:translateX(-50%) translateY(-50%);">' + d.labels[labelNum] + '</p></div';
             blockDiv.innerHTML += genderButton;
         });
@@ -106,7 +125,7 @@ $(()=>{
             var blockDiv = document.getElementById("blocks");
             var labelNum = 0;
             if (d.labels[labelNum] == null) labelNum = 1;
-            var hoursButton = '<div id="hoursButton" style="float:left; width:50%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
+            var hoursButton = '<div id="hoursButton" style="float:left; margin:1%; width:45%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
                 onclick="plotHoursChart()"><p style="position:relative; top:50%; left:50%; transform:translateX(-50%) translateY(-50%);">' + d.labels[labelNum] + '</p></div';
             blockDiv.innerHTML += hoursButton;
         });
@@ -118,9 +137,21 @@ $(()=>{
             var blockDiv = document.getElementById("blocks");
             var labelNum = 0;
             if (d.labels[labelNum] == null) labelNum = 1;
-            var educationButton = '<div id="educationButton" style="float:left; width:50%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
+            var educationButton = '<div id="educationButton" style="float:left; margin:1%; width:45%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
                 onclick="plotEducationChart()"><p style="position:relative; top:50%; left:50%; transform:translateX(-50%) translateY(-50%);">' + d.labels[labelNum] + '</p></div';
             blockDiv.innerHTML += educationButton;
+        });
+    
+    var progRequest = $.ajax({url: "http://localhost:8080/data/prog"})
+        .done((d)=>{
+            progData = d;
+            console.log(d);
+            var blockDiv = document.getElementById("blocks");
+            var labelNum = 0;
+            if (d.labels[labelNum] == null) labelNum = 1;
+            var progButton = '<div id="progButton" style="float:left; margin:1%; width:45%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
+                onclick="plotProgChart()"><p style="position:relative; top:50%; left:50%; transform:translateX(-50%) translateY(-50%);">' + d.labels[labelNum] + '</p></div';
+            blockDiv.innerHTML += progButton;
         });
     
     /*
