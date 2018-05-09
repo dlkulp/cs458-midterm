@@ -23,3 +23,6 @@ First things first, make sure you have both Node.js and NPM installed on your lo
 *Note: You do not need to kill node and restart it when you make changes to a file unless it is the server file.*  Simply save any files you've modified and hit `f5` in the browser. 
 
 That's it for now.  At this point you should see "App listening on http://localhost:[PORT]", type `http://localhost:[PORT]` in a browser and you should see the app!
+
+Here is the link to our live web location: https://cs458.azurewebsites.net/
+* This page might not be the most recent version of our code, but it is a functional demo.

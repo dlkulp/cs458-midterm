@@ -7,6 +7,10 @@ Introduction ("Summary backgrounds, tasks, and what you did"):
  - We found the Stack Overflow 2017 Developer Survey, and decided on graduating seniors looking for a job in CS as our clients
  - Created a visualization to help better inform job-seeking seniors about what choices might lead to the most job satisfaction
 
+This is the midterm project for CS 458, Info Visualization. We previously turned in a paper outlining our research, client interaction, and database setup for this project. This paper and corresponding visualization application build on the ideas we set up in our first paper. Our task, in a basic sense, was to find an interesting data set and client to create a visualization for. We needed to go through the process of working with our client to establish their needs and how we might help. Now, in this second portion of the midterm project, we made a first attempt at actually implementing our visualization. 
+We decided to work with the data from the Stack Overflow 2017 Developer Survey. The goal was to compile the survey results and create a visualization that would be helpful for graduating computer science seniors looking for their first job. After talking with our client and exploring our available data, we developed a visualization to show the profile of a software developer that lends itself to the highest reported job satisfaction.
+
+
 Method ("Necessary libraries or techniques to complete your project, Why and how to use them"):
  - Database-related libraries/techniques
     - Ideally Damian can write a blurb about this stuff

@@ -126,7 +126,7 @@ $(()=>{
             var labelNum = 0;
             if (d.labels[labelNum] == null) labelNum = 1;
             var hoursButton = '<div id="hoursButton" style="float:left; margin:1%; width:45%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
-                onclick="plotHoursChart()"><p style="position:relative; top:50%; left:50%; transform:translateX(-50%) translateY(-50%);">' + d.labels[labelNum] + '</p></div';
+                onclick="plotHoursChart()"><p style="position:relative; top:50%; left:50%; transform:translateX(-50%) translateY(-50%);">Works ' + d.labels[labelNum] + ' Hours Per Week</p></div';
             blockDiv.innerHTML += hoursButton;
         });
     
@@ -150,7 +150,7 @@ $(()=>{
             var labelNum = 0;
             if (d.labels[labelNum] == null) labelNum = 1;
             var progButton = '<div id="progButton" style="float:left; margin:1%; width:45%; height:200px; background-color:' + getColor(d.values[labelNum]) + '; text-align:center" \
-                onclick="plotProgChart()"><p style="position:relative; top:50%; left:50%; transform:translateX(-50%) translateY(-50%);">' + d.labels[labelNum] + '</p></div';
+                onclick="plotProgChart()"><p style="position:relative; top:50%; left:50%; transform:translateX(-50%) translateY(-50%);">' + d.labels[labelNum] + ' programming</p></div';
             blockDiv.innerHTML += progButton;
         });
     
